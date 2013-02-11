@@ -10,3 +10,10 @@ And then you can use it:
 
    file = models.FileField(storage=SoftLayerStorage())
      
+Add the following to your project’s settings.py file:
+
+CUMULUS = {
+    'USERNAME': 'YourUsername',
+    'API_KEY': 'YourAPIKey',
+    'CONTAINER': 'ContainerName'
+}
