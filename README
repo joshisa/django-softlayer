@@ -4,5 +4,9 @@ This package uses django-cumulus plus softlayer-object-storage-python packages.
 
 To use this storage just import storage class:
 
-    from django_cumulus import SoftLayerStorage
+    from django_softlayer import SoftLayerStorage
+
+And then you can use it:
+
+   file = models.FileField(storage=SoftLayerStorage())
      
