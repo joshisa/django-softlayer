@@ -18,13 +18,13 @@ install_requires = [
 ]
 
 #Execute function to handle setuptools functionality
-setup(name="django_softlayer",
+setup(name="django-softlayer",
     version="0.1",
     description="Django storage for SoftLayer Cloud Storage",
     long_description=read('README'),
     author='KirillBakanov',
     author_email='kirill.bakanov@gmail.com',
-    url='http://github.com/Arpaso/django-softlayer',
+    url='https://github.com/Arpaso/django-softlayer',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     include_package_data=True,
