@@ -8,7 +8,7 @@ from cloudfiles.errors import NoSuchObject
 class SoftLayerStorage(CloudFilesStorage):
 
     """
-    Custom storage for Rackspace Cloud Files.
+    Custom storage for SoftLayer Cloud Files object storage.
     """
     default_quick_listdir = True
 
