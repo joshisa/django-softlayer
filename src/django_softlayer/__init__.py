@@ -1,1 +1,1 @@
-__author__ = 'feanor'
+from softlayer_storage import SoftLayerStorage
