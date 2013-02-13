@@ -9,7 +9,8 @@ from django_softlayer import SoftLayerStorage
 
 
 class TestSoftLayerStorage(TestCase):
-
+    """Uploads to storage file 1.mp3, then reads it and deletes it from storage"""
+    
     def setUp(self):
         self.storage=SoftLayerStorage()
 
