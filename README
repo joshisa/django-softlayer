@@ -17,3 +17,13 @@ CUMULUS = {
     'API_KEY': 'YourAPIKey',
     'CONTAINER': 'ContainerName'
 }
+
+INSTALLED_APPS=[
+...
+'django_softlayer',
+...
+]
+
+To upload files to storage from folder, check for the command usage:
+
+./manage.py syncstatic --help
