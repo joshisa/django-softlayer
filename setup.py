@@ -12,7 +12,7 @@ def read(fname):
 #Dependencies - python eggs
 install_requires = [
     'setuptools',
-    'Django == 1.4.1',
+    'Django >= 1.4.1',
     'python-cloudfiles==1.7.10',
     'django-cumulus==1.0.5',
     'softlayer-object-storage==0.4.6',
