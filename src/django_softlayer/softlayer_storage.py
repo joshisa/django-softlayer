@@ -2,7 +2,8 @@ import object_storage
 from cumulus.storage import CloudFilesStorage, CloudStorageDirectory
 import mimetypes
 import os
-from cloudfiles.errors import NoSuchObject, NotFound
+from cloudfiles.errors import NoSuchObject
+from object_storage.errors import NotFound
 
 
 class SoftLayerStorage(CloudFilesStorage):
