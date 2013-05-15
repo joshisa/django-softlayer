@@ -60,8 +60,8 @@ class SoftLayerStorage(CloudFilesStorage):
                 self.container.get_object(path)
             except NoSuchObject:
                 self._save(path, CloudStorageDirectory(path))
-            except:
-                pass
+            #except:
+            #    pass
 
         content.open()
         cloud_obj = self.container[name].create()
@@ -100,6 +100,9 @@ class SoftLayerStorage(CloudFilesStorage):
             return False
 
     def get_available_name(self, name):
-        if not self.exists(name):
-            return super(SoftLayerStorage, self).get_available_name(name)
+        #=======================================================================
+        # if self.exists(name):
+        #     self.delete(name)
+        #=======================================================================
         return name
+    
