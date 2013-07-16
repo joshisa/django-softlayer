@@ -1,7 +1,7 @@
 import object_storage
 from cumulus.storage import CloudFilesStorage, CloudStorageDirectory
 import mimetypes
-import os
+import os, sys
 from cloudfiles.errors import NoSuchObject
 from object_storage.errors import NotFound
 
@@ -61,8 +61,9 @@ class SoftLayerStorage(CloudFilesStorage):
                 self.container.get_object(path)
             except (NoSuchObject, NotFound):
                 self._save(path, CloudStorageDirectory(path))
-            #except:
-            #    pass
+            except:
+                print 'TRACK SAVING UNKNOWN EXCEPTION: %s' % sys.exc_info()[0]
+                print 'FILENAME: %s' % name
 
         content.open()
         cloud_obj = self.container[name].create()
