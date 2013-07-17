@@ -1,7 +1,7 @@
 import object_storage
 from cumulus.storage import CloudFilesStorage, CloudStorageDirectory
 import mimetypes
-import os, sys
+import os, sys, logging
 from cloudfiles.errors import NoSuchObject
 from object_storage.errors import NotFound
 
@@ -12,6 +12,7 @@ class SoftLayerStorage(CloudFilesStorage):
     Custom storage for SoftLayer Cloud Files object storage.
     """
     default_quick_listdir = True
+    logger = logging.getLogger('django-softlayer.debug')
 
     def _get_connection(self):
         if not hasattr(self, '_connection'):
@@ -62,8 +63,8 @@ class SoftLayerStorage(CloudFilesStorage):
             except (NoSuchObject, NotFound):
                 self._save(path, CloudStorageDirectory(path))
             except:
-                print 'TRACK SAVING UNKNOWN EXCEPTION: %s' % sys.exc_info()[0]
-                print 'FILENAME: %s' % name
+                self.logger.debug('TRACK SAVING UNKNOWN EXCEPTION: %s' % sys.exc_info()[0])
+                self.logger.debug('FILENAME: %s' % name)
 
         content.open()
         cloud_obj = self.container[name].create()
