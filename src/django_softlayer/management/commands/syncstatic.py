@@ -13,7 +13,7 @@ from django.http import Http404
 class Command(BaseCommand):
     '''Walks the directory specified in MEDIA_FOLDER and uploads mp3 files to storage'''
     args = ''
-    help = 'Walks the directory and uploads mp3 3333files to cloud storage container'
+    help = 'Walks the directory and uploads mp3 files to cloud storage container'
     
     option_list = BaseCommand.option_list + (
         make_option('--mediaroot',
