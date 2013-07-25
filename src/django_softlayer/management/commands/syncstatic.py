@@ -45,13 +45,18 @@ class Command(BaseCommand):
                         storage.save(relative_name, File(_file))
                 else:
                     try:
-                        storage.container.get_object(relative_name)
+                        stored_obj = storage.container.get_object(relative_name)
+                        if stored_obj.props.get('size') is 0:
+                            raise Exception(404, 'Null size')
                         skipped = True
                     # Uncatchable exception format
                     except Exception, e:
                         if e[0] == 404:
                             with open(file_name, 'rb') as _file:
                                 storage.save(relative_name, File(_file))
+                        else:
+                            skipped = True
+                            print e
     
                 if verbosity > 1:
                     total += 1
