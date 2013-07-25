@@ -32,19 +32,21 @@ class Command(BaseCommand):
     def handle(self, mediaroot, mask, noreplace, *args, **options):
         
         verbosity = int(options.get('verbosity', 1))
-        
-        storage=SoftLayerStorage()
+
+        storage = SoftLayerStorage()
         total = 0
         for root, dirnames, filenames in os.walk(mediaroot):
             for filename in fnmatch.filter(filenames, mask):
                 file_name = os.path.abspath(os.path.join(root, filename))
                 relative_name = os.path.relpath(file_name, mediaroot)
+                skipped = False
                 if not noreplace:
                     with open(file_name, 'rb') as _file:
                         storage.save(relative_name, File(_file))
                 else:
                     try:
                         storage.container.get_object(relative_name)
+                        skipped = True
                     # Uncatchable exception format
                     except Exception, e:
                         if e[0] == 404:
@@ -53,4 +55,4 @@ class Command(BaseCommand):
     
                 if verbosity > 1:
                     total += 1
-                    print '{0}: {1}'.format(total, file_name)
+                    print '{0}: {1}, skipped: {2}'.format(total, file_name, skipped)
