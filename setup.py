@@ -20,7 +20,7 @@ install_requires = [
 
 #Execute function to handle setuptools functionality
 setup(name="django-softlayer",
-    version="0.1",
+    version="0.2",
     description="Django storage for SoftLayer Cloud Storage",
     long_description=read('README'),
     author='KirillBakanov',
