@@ -58,7 +58,6 @@ class Command(BaseCommand):
                     model._meta.get_field(field_name)
                 except FieldDoesNotExist:
                     continue
-                print field_name, model
                 get_missing_files(model, field_name)
 
 
