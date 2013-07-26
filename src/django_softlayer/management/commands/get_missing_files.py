@@ -46,7 +46,7 @@ class Command(BaseCommand):
                         printTrack(obj, 'Size is 0')
                 except:
                     printTrack(obj, 'FILE NOT FOUND')
-            print '\t------------Done-------------'
+            print '\t------------------------------Done----------------------------------'
 
         model_names = models.split(',')
         field_names = fields.split(',')
