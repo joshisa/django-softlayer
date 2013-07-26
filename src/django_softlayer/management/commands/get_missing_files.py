@@ -1,7 +1,7 @@
 ### -*- coding: utf-8 -*- ####################################################
 from optparse import make_option
 
-from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand, CommandError
 from django.db.models import get_app, get_model, FieldDoesNotExist
 
 SIMILARS_LENGTH = 40
@@ -26,11 +26,11 @@ class Command(BaseCommand):
     def handle(self, app, models, fields, *args, **options):
         self.index = 1
         if not app:
-            raise Exception('You must specify --app option')
+            raise CommandError('You must specify --app option')
         if not models:
-            raise Exception('You must specify --models option')
+            raise CommandError('You must specify --models option')
         if not fields:
-            raise Exception('You must specify --fields option')
+            raise CommandError('You must specify --fields option')
 
         def printTrack(obj, reason):
             print "%s. Instance: %s\n\tID: %s\n\tReason: %s" % \
