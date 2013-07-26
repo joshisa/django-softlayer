@@ -13,7 +13,6 @@ class Command(BaseCommand):
     option_list = BaseCommand.option_list + (
         make_option('--app',
                     dest='app',
-                    default='',
                     help='Django application to get models from. Example: myApp'),
         make_option('--models',
                     dest='models',
@@ -26,6 +25,12 @@ class Command(BaseCommand):
 
     def handle(self, app, models, fields, *args, **options):
         self.index = 1
+        if not app:
+            raise Exception('You must specify --app option')
+        if not models:
+            raise Exception('You must specify --models option')
+        if not fields:
+            raise Exception('You must specify --fields option')
 
         def printTrack(obj, reason):
             print "%s. Instance: %s\n\tID: %s\n\tReason: %s" % \
