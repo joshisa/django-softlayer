@@ -38,7 +38,7 @@ class Command(BaseCommand):
             self.index += 1
 
         def get_missing_files(model, field_name):
-            print '\t-------------Searching missing or incomplete %ss in %s:------------\n' % \
+            print '----------------Searching missing or incomplete %ss in %s:--------------\n' % \
                   (field_name, model.__name__)
             for obj in model.objects.all():
                 try:
