@@ -5,34 +5,34 @@ from django.core.management.base import BaseCommand, CommandError
 from django.db.models import get_app, get_model, FieldDoesNotExist
 from django.conf import settings
 
+
 class Command(BaseCommand):
     '''Calculates similar albums for each album in database'''
     args = ''
     help = 'Returns missing or empty track files from the SoftLayer'
     option_list = BaseCommand.option_list + (
-        make_option('--app',
-                    dest='app',
-                    help='Django application to get models from. Example: myApp'),
-        make_option('--model_fields',
-                    dest='model_fields',
-                    help='String containing dot separated model name and field name\n Example: User.file'),
+        make_option('--app_model_field',
+                    dest='app_model_field',
+                    help='String containing dot separated app, model and field name\n Example: myapp.User.file'),
     )
 
 
-    def handle(self, app, model_fields, *args, **options):
+    def handle(self, app_model_field, *args, **options):
         self.index = 1
-        models = []
-        if hasattr(settings, 'CMD_MISSING_FILES_SETTINGS'):
-            cmd_settings = settings.CMD_MISSING_FILES_SETTINGS
-            app = cmd_settings.get('app', False)
-            model_fields = cmd_settings.get('model_fields', False)
-            for obj in model_fields:
-                models.append(obj.split('.'))
+        tuples = []
+        if not app_model_field:
+            if hasattr(settings, 'CMD_MISSING_FILES_SETTINGS'):
+                cmd_settings = settings.CMD_MISSING_FILES_SETTINGS
+                app_model_field = cmd_settings.get('app_model_field', False)
 
-        if not app:
-            raise CommandError('You must specify --app option. Example: myApp')
-        if not model_fields:
-            raise CommandError('You must specify --model_fields option. Example: Model.field')
+        if app_model_field:
+            if not isinstance(app_model_field, basestring):
+                for obj in app_model_field:
+                    tuples.append(obj.split('.'))
+            else:
+                tuples.append(app_model_field.split('.'))
+        else:
+            raise CommandError('You must specify --app_model_field option. Example: app.Model.field')
 
         def printTrack(obj, reason):
             print "%s. Instance: %s\n\tID: %s\n\tReason: %s" % \
@@ -49,13 +49,15 @@ class Command(BaseCommand):
                 except:
                     printTrack(obj, 'FILE NOT FOUND')
             print '----------------------------------Done--------------------------------------'
-        for model_field in models:
-            model = get_model(app, model_field[0])
-            field_name = model_field[1]
+
+        for _tuple in tuples:
+            model = get_model(_tuple[0], _tuple[1])
+            field_name = _tuple[2]
             try:
                 model._meta.get_field(field_name)
             except FieldDoesNotExist:
-                continue
+                raise CommandError(
+                    'There is no field \"%s\" of model \"%s\" in app \"%s\" ' % (_tuple[2], _tuple[1], _tuple[0]))
             get_missing_files(model, field_name)
 
 
