@@ -3,8 +3,7 @@ from optparse import make_option
 
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models import get_app, get_model, FieldDoesNotExist
-
-SIMILARS_LENGTH = 40
+from django.conf import settings
 
 class Command(BaseCommand):
     '''Calculates similar albums for each album in database'''
@@ -25,6 +24,12 @@ class Command(BaseCommand):
 
     def handle(self, app, models, fields, *args, **options):
         self.index = 1
+        if hasattr(settings, 'CMD_MISSING_FILES_SETTINGS'):
+            cmd_settings=settings.CMD_MISSING_FILES_SETTINGS
+            app = cmd_settings.get('app', False)
+            models = cmd_settings.get('models', False)
+            fields = cmd_settings.get('fields', False)
+
         if not app:
             raise CommandError('You must specify --app option')
         if not models:
