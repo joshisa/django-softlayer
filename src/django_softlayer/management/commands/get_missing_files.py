@@ -22,8 +22,7 @@ class Command(BaseCommand):
         tuples = []
         if not app_model_field:
             if hasattr(settings, 'CMD_MISSING_FILES_SETTINGS'):
-                cmd_settings = settings.CMD_MISSING_FILES_SETTINGS
-                app_model_field = cmd_settings.get('app_model_field', False)
+                app_model_field = settings.CMD_MISSING_FILES_SETTINGS
 
         if app_model_field:
             if not isinstance(app_model_field, basestring):
