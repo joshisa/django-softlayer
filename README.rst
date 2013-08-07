@@ -1,10 +1,12 @@
-# Django storage for SoftLayer Cloud Storage.
+Django storage for SoftLayer Cloud Storage.
+==========================================
 
 This package uses django-cumulus plus softlayer-object-storage-python packages.
 
-# Usage
+Settings
+========
 
-Add the following to your project’s **settings.py** (your SoftLayer credentials):
+Add the following to your project’s **settings.py** (your SoftLayer credentials)::
 
 
     CUMULUS = {
@@ -20,9 +22,12 @@ Add the following to your project’s **settings.py** (your SoftLayer credential
     'django_softlayer',
     ...]
 
+Usage
+=====
 
 To use this storage:
-* import storage class, and create your own storage.py:
+
+* import storage class, and create your own storage.py::
 
     from django_softlayer import SoftLayerStorage
     from django.utils.functional import LazyObject
@@ -32,7 +37,7 @@ To use this storage:
         def _setup(self):
             self._wrapped = get_storage_class(settings.CLOUD_FILE_STORAGE)()
 
-* Then you can use it in models.py:
+* Then you can use it in models.py::
 
     from storage import MyStorage
 
@@ -41,16 +46,15 @@ To use this storage:
 
 * That's all.
      
-To upload files to storage from folder, check for the command usage:
+To upload files to storage from folder, check for the command usage::
 
     ./manage.py syncstatic --help
 
 # Testing
 
-To run tests:
+To run tests::
 
     ./manage.py test django_softlayer
 
-Written by the development team of Arpaso company.
 
-http://arpaso.com
+Written by the development team of Arpaso company: http://arpaso.com
