@@ -51,8 +51,8 @@ To upload files to storage from folder, check for the command usage::
 
     ./manage.py syncstatic --help
 
-# Testing
-
+Testing
+=======
 To run tests::
 
     ./manage.py test django_softlayer
