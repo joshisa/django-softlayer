@@ -1,4 +1,5 @@
-Django storage for SoftLayer Cloud Storage.
+==========================================
+Django storage for SoftLayer Cloud Storage
 ==========================================
 
 This package uses django-cumulus plus softlayer-object-storage-python packages.
