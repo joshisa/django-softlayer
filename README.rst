@@ -68,7 +68,7 @@ Uploads directories to the cloud storage saving directory structure::
 
     python manage.py syncstatic
 
-**Options**::
+**Options**
 
 * `--mediaroot` - A source directory to copy files from, e.g. "/home/djangoprojects/myproject/media".
 Defaults to `settings.MEDIA_ROOT`
