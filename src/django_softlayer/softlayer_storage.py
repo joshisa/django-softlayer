@@ -63,8 +63,8 @@ class SoftLayerStorage(CloudFilesStorage):
             except (NoSuchObject, NotFound):
                 self._save(path, CloudStorageDirectory(path))
             except:
-                self.logger.debug('TRACK SAVING UNKNOWN EXCEPTION: %s' % sys.exc_info()[0])
-                self.logger.debug('FILENAME: %s' % name)
+                self.logger.debug('File saving unknown exception: %s' % sys.exc_info()[0])
+                self.logger.debug('Error at filename: %s' % name)
 
         content.open()
         cloud_obj = self.container[name].create()
