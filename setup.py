@@ -34,7 +34,7 @@ setup(name="django-softlayer",
     install_requires=install_requires,
     keywords = ['django', 'softlayer', 'storage', 'cloudfiles'],
     classifiers=(
-        "Development Status :: 4 - Beta"
+        "Development Status :: 4 - Beta",
         "Framework :: Django",
         "Intended Audience :: Developers",
         "Intended Audience :: System Administrators",
