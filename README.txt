@@ -58,4 +58,48 @@ To run tests::
     ./manage.py test django_softlayer
 
 
+Management commands
+===================
+
+syncstatic
+----------
+
+Uploads directories to the cloud storage saving directory structure::
+
+    python manage.py syncstatic
+
+**Options**
+
+* **--mediaroot** - A source directory to copy files from, e.g. "/home/djangoprojects/myproject/media".
+Defaults to **settings.MEDIA_ROOT**
+
+* **--noreplace** - Skip and do not replace existing files in the storage. Default is **False**.
+
+* **--mask** - A file mask, e.g. **\*.ext**. Defaults to: **\*.mp3**
+
+* **-v** - higher verbosity is available
+
+get_missing_files
+-----------------
+
+Prints information to console about empty or non existing files present in database but not at cloud files storage::
+
+    python manage.py get_missing_files
+
+**Options**
+
+* **--app_model_field** - String containing dot separated app, model and field name. Example: **myapp.User.file**
+
+**NOTE:** this options can be defaulted to **CMD_MISSING_FILES_SETTINGS** variable in **settings.py**::
+
+    CMD_MISSING_FILES_SETTINGS = (
+        'app.model.filefield',
+        'nextapp.nextmodel.nextfile'
+    )
+
+* When it's specified **CMD_MISSING_FILES_SETTINGS** variable you can search a set
+of **app.model.field** to search for empty files.
+
+* When using **--app_model_field** option, you can only specify one **app.model.field** per command.
+
 Written by the development team of Arpaso company: http://arpaso.com
