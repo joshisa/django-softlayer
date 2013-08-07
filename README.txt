@@ -75,7 +75,7 @@ Defaults to **settings.MEDIA_ROOT**
 
 * **--noreplace** - Skip and do not replace existing files in the storage. Default is **False**.
 
-* **--mask** - A file mask, e.g. **\*.ext**. Defaults to: **\*.mp3**
+* **--mask** - A file mask, e.g. **.ext**. Defaults to: **.mp3**
 
 * **-v** - higher verbosity is available
 
