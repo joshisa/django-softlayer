@@ -1,4 +1,4 @@
-Django storage for SoftLayer Cloud Storage
+Django storage for SoftLayer Cloud Storage.
 
 This package uses django-cumulus plus softlayer-object-storage-python packages.
 
@@ -45,3 +45,7 @@ To upload files to storage from folder, check for the command usage:
 To run tests:
 
 ./manage.py test django_softlayer
+
+Written by the development team of Arpaso company.
+
+http://arpaso.com
