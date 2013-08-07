@@ -9,7 +9,7 @@ from django.conf import settings
 class Command(BaseCommand):
     '''Calculates similar albums for each album in database'''
     args = ''
-    help = 'Returns missing or empty track files from the SoftLayer'
+    help = 'Returns missing or empty files from the SoftLayer'
     option_list = BaseCommand.option_list + (
         make_option('--app_model_field',
                     dest='app_model_field',
