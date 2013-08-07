@@ -61,26 +61,9 @@ To run tests::
 Management commands
 ===================
 
-syncstatic
-----------
 
-Uploads directories to the cloud storage saving directory structure::
+**get_missing_files**
 
-    python manage.py syncstatic
-
-**Options**
-
-* **--mediaroot** - A source directory to copy files from, e.g. "/home/djangoprojects/myproject/media".
-Defaults to **settings.MEDIA_ROOT**
-
-* **--noreplace** - Skip and do not replace existing files in the storage. Default is **False**.
-
-* **--mask** - A file mask, e.g. **.ext**. Defaults to: **.mp3**
-
-* **-v** - higher verbosity is available
-
-get_missing_files
------------------
 
 Prints information to console about empty or non existing files present in database but not at cloud files storage::
 
