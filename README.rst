@@ -19,10 +19,11 @@ Add the following to your project’s **settings.py** (your SoftLayer credential
     }
 
     CLOUD_FILE_STORAGE = 'django_softlayer.SoftLayerStorage'
-    INSTALLED_APPS=[
-    ...
-    'django_softlayer',
-    ...]
+    INSTALLED_APPS = [
+        ...
+        'django_softlayer',
+        ...
+    ]
 
 Usage
 =====
