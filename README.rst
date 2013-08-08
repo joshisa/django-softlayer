@@ -4,6 +4,8 @@ Django storage for SoftLayer Cloud Storage
 
 This package uses django-cumulus plus softlayer-object-storage-python packages.
 
+Link to github repository: https://github.com/Arpaso/django-softlayer
+
 Settings
 ========
 
