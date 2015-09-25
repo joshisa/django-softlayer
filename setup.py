@@ -17,6 +17,9 @@ install_requires = [
     'django-cumulus==1.0.5',
     'softlayer-object-storage==0.4.6',
 ]
+dependency_links = [
+    "git+ssh://git@github.com/joshisa/softlayer-object-storage-python.git"
+]
 
 #Execute function to handle setuptools functionality
 setup(name="django-softlayer",
@@ -32,6 +35,7 @@ setup(name="django-softlayer",
     include_package_data=True,
     zip_safe=False,
     install_requires=install_requires,
+    dependency_links=dependency_links,
     keywords = ['django', 'softlayer', 'storage', 'cloudfiles'],
     classifiers=(
         "Development Status :: 4 - Beta",
